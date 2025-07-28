@@ -22,7 +22,9 @@ const TopBar = () => {
       <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* Left - Logo */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <Image src="/mseLogo.png" alt="Logo" width={65} height={60} />
+          <Link href="/" passHref>
+            <Image src="/mseLogo.png" alt="Logo" width={65} height={60} />
+          </Link>
         </Box>
 
         {/* Center - Nav Menu */}
@@ -30,7 +32,7 @@ const TopBar = () => {
           <IconButton size="small" sx={{ bgcolor: "#f2f2f2" }}>
             <Search fontSize="small" />
           </IconButton>
-          <Link href="/markets">
+          <Link href="/">
             <Typography variant="body2" sx={{ cursor: "pointer" }}>
               Markets
             </Typography>

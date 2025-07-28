@@ -10,21 +10,21 @@ export const getColorForData = (data) => {
   if (data.profit > 0) {
     if (data.profit < 100) return colorCoding.profit[0];
     if (data.profit < 500) return colorCoding.profit[1];
-    if (data.profit < 1000) return colorCoding.profit[2];
-    if (data.profit < 4000) return colorCoding.profit[3];
+    if (data.profit < 4000) return colorCoding.profit[2];
+    if (data.profit >= 4000) return colorCoding.profit[3];
   }
 
   if (data.loss > 0) {
     if (data.loss < 100) return colorCoding.loss[0];
     if (data.loss < 500) return colorCoding.loss[1];
-    if (data.loss < 1000) return colorCoding.loss[2];
-    if (data.loss < 4000) return colorCoding.loss[3];
+    if (data.loss < 4000) return colorCoding.loss[2];
+    if (data.loss >= 4000) return colorCoding.loss[3];
   }
 
   if (data.order) {
     if (data.order === 1) return colorCoding.order[0];
     if (data.order === 2) return colorCoding.order[1];
-    if (data.order === 3) return colorCoding.order[2];
+    if (data.order < 5) return colorCoding.order[2];
     if (data.order >= 5) return colorCoding.order[3];
   }
   return "#eaebed";

@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { getColorForData } from "@/Utils/Color";
+import { Description } from "@mui/icons-material";
 
 const getMonthMatrix = (year, month) => {
   const firstDay = new Date(year, month, 1).getDay();
@@ -85,6 +86,7 @@ const MonthView = ({ selectedDate, onSelectDate, calendarData }) => {
               });
             }
           }
+          if (day === 10) console.log(cellColor, selectedDayRecords);
 
           return (
             <Box
@@ -95,30 +97,70 @@ const MonthView = ({ selectedDate, onSelectDate, calendarData }) => {
                 border: day && `1px solid ${cellColor}`,
                 backgroundColor: "#fff",
                 padding: 1,
-                display: "flex",
-                alignItems: "flex-start",
-                justifyContent: "flex-end",
-                color: "#7e7e7e",
+                // display: "flex",
+                // alignItems: "flex-start",
+                // justifyContent: "flex-end",
+                color: "#5e5d5dff",
                 fontSize: "0.75rem",
                 cursor: day && "pointer",
               }}
               onClick={() => day && onSelectDate(new Date(year, month, day))}
             >
               {day ? (
-                <span
-                  style={{
-                    backgroundColor: cellColor,
-                    borderRadius: "8px",
-                    height: 28,
-                    width: 28,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 12,
-                  }}
-                >
-                  {String(day).padStart(2, "0")}
-                </span>
+                <>
+                  {/* Date Badge */}
+                  <Box
+                    sx={{
+                      backgroundColor: cellColor,
+                      borderRadius: 1.5,
+                      width: 28,
+                      height: 28,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color:
+                        selectedDayRecords &&
+                        (selectedDayRecords[1] ||
+                          selectedDayRecords[2] ||
+                          selectedDayRecords[3] ||
+                          selectedDayRecords[4]) &&
+                        "#fff",
+                    }}
+                  >
+                    {String(day).padStart(2, "0")}
+                  </Box>{" "}
+                  <br />
+                  {selectedDayRecords &&
+                  (selectedDayRecords[1] ||
+                    selectedDayRecords[2] ||
+                    selectedDayRecords[3] ||
+                    selectedDayRecords[4]) ? (
+                    <Box>
+                      {/* P&L Text */}
+                      <Typography
+                        variant="caption"
+                        fontWeight={600}
+                        sx={{ mt: 0.5, color: cellColor }}
+                      >
+                        {selectedDayRecords[4] > 0
+                          ? `+₹${selectedDayRecords[4]}`
+                          : selectedDayRecords[4] < 0
+                          ? `-₹${selectedDayRecords[4]}`
+                          : "-"}
+                      </Typography>
+
+                      {/* Icons */}
+                      <Stack direction="row" spacing={0.5} alignItems="center">
+                        <Description sx={{ fontSize: 14 }} />
+                        <Typography variant="caption">
+                          {selectedDayRecords[2]}
+                        </Typography>
+                      </Stack>
+                    </Box>
+                  ) : null}
+                </>
               ) : (
                 ""
               )}

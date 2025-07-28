@@ -475,7 +475,7 @@ const CalendarMock = {
       ["2025-07-07", null, null, null, null],
       ["2025-07-08", null, null, null, null],
       ["2025-07-09", null, null, null, null],
-      ["2025-07-10", null, 2, null, 15473],
+      ["2025-07-10", null, 2, null, 3045],
       ["2025-07-11", null, null, null, null],
       ["2025-07-12", null, null, null, null],
       ["2025-07-13", null, null, null, null],

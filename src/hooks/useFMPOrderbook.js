@@ -9,7 +9,7 @@ export default function useFMPOrderbook(symbol = "AAPL") {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://financialmodelingprep.com/api/v3/book/${symbol}?apikey=${config.FMP_API_KEY}`
+          `${config.FMP_SERVICE}/api/v3/book/${symbol}?apikey=${config.FMP_API_KEY}`
         );
         const data = await res.json();
         setBids(data.bids || []);
