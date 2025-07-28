@@ -11,5 +11,5 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 Libraries Used:
 ```
-next.js, material ui, chart.js
+next.js, material ui, chart.js, jest
 ```
